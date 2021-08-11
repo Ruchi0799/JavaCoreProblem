@@ -12,6 +12,7 @@ public class BinaryNumber {
         String padded=String.format("%08d",Integer.parseInt(binaryno));
         //System.out.println(padded);
         int total=0;
+        int total1=0;
 
         int[] newGuess = new int[padded.length()];
         for (int i = 0; i < padded.length(); i++)
@@ -33,7 +34,23 @@ public class BinaryNumber {
         System.out.println(total);
 
         //reversing nibbles
+        for(int i=0;i<4;i++)
+        {
+            temp=newGuess[i];
+            newGuess[i]=newGuess[4-1-i];
+            newGuess[4-1-i]=temp;
+        }
+        for(int j=0;j<8;j++)
+        {
+            if(newGuess[j]==1)
+            {
+                total1= (int) (total1+Math.pow(2,7-j));
 
-     
+            }
+        }
+        System.out.println(total1);
+
+
+
     }
 }

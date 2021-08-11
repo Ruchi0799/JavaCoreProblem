@@ -7,6 +7,7 @@ import java.time.Instant;
 
 public class StopWatch {
     public static void main(String[] args) {
+        /*
         Scanner sc = new Scanner(System.in);
         System.out.println("Press 0 to start");
         int startaction= sc.nextInt();
@@ -21,5 +22,5 @@ public class StopWatch {
 
         Duration timeElapsed = Duration.between(start, end);
         System.out.println("Time taken: "+ timeElapsed.toMillis() +" milliseconds");
-    }
+    */ }
 }

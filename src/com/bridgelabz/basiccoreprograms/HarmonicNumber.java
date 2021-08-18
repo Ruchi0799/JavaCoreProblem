@@ -1,9 +1,11 @@
 package com.bridgelabz.basiccoreprograms;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class HarmonicNumber {
     public static final int NUMBER = 1;
+
     public static void main(String[] args) {
         System.out.println("Enter the Harmonic value N");
         Scanner sc = new Scanner(System.in);

@@ -6,47 +6,25 @@ import java.util.Scanner;
 class StockAccountComputation {
     public String stockname;
     public double noofshare;
-    public double sharepriceRL=100;
-    public double sharepriceAD=122;
-    public double sharepriceTT=110;
-    public double totaleachRL=0;
-    public double totaleachAD=0;
-    public double totaleachTT=0;
+    public double shareprice;
+
     public double totalallstock=0;
 
-    public StockAccountComputation(String stockname, double noofshare) {
+    public StockAccountComputation(String stockname, double noofshare,double shareprice) {
         this.stockname = stockname;
         this.noofshare = noofshare;
-        //this.shareprice = shareprice;
+        this.shareprice = shareprice;
     }
 
-    public void setTotaleachRL(double totaleachRL) {
-        this.totaleachRL = totaleachRL;
-    }
 
-    public void setTotaleachAD(double totaleachAD) {
-        this.totaleachAD = totaleachAD;
-    }
 
-    public void setTotaleachTT(double totaleachTT) {
-        this.totaleachTT = totaleachTT;
-    }
-
-    public void setTotalallstock(double totalallstock) {
-        this.totalallstock = totalallstock;
-    }
 
     @Override
     public String toString() {
         return "StockAccountComputation{" +
                 "stockname='" + stockname + '\'' +
                 ", noofshare=" + noofshare +
-                ", sharepriceRL=" + sharepriceRL +
-                ", sharepriceAD=" + sharepriceAD +
-                ", sharepriceTT=" + sharepriceTT +
-                ", totaleachRL=" + totaleachRL +
-                ", totaleachAD=" + totaleachAD +
-                ", totaleachTT=" + totaleachTT +
+                ", shareprice=" + shareprice +
                 ", totalallstock=" + totalallstock +
                 '}';
     }
@@ -73,52 +51,37 @@ public class StockAccount{
         String stockname=sc.next();
         System.out.println("Enter no of shares");
         double noofshare=sc.nextDouble();
+        System.out.println("Enter price of share");
+        double shareprice= sc.nextDouble();
 
-        stockarray[number]=new StockAccountComputation(stockname,noofshare);
+        stockarray[number]=new StockAccountComputation(stockname,noofshare,shareprice);
         number++;
     }
 
-    public void displayStock() {
-        for (int i = 0; i < stockarray.length; i++) {
-            System.out.println(stockarray[i]);
-        }
-    }
 
     public void calculatetotalstock(){
         double totalallstock1=0;
         for (int i=0;i<stockarray.length;i++)
         {
-            if (stockarray[i].stockname.equals("RL"))
-            {
-                double totalrelstock1=stockarray[i].noofshare*stockarray[i].sharepriceRL;
-                stockarray[i].setTotaleachRL(totalrelstock1);
-                totalallstock1=totalallstock1+totalrelstock1;
-            }
-            else if(stockarray[i].stockname.equals("AD"))
-            {
-                double totaladstock1=stockarray[i].noofshare*stockarray[i].sharepriceAD;
-                stockarray[i].setTotaleachAD(totaladstock1);
-                totalallstock1=totalallstock1+totaladstock1;
-            }
-            else if(stockarray[i].stockname.equals("TT"))
-            {
-                double totalttstock1=stockarray[i].noofshare*stockarray[i].sharepriceTT;
-                stockarray[i].setTotaleachTT(totalttstock1);
-                totalallstock1=totalallstock1+totalttstock1;
-            }
-            stockarray[i].setTotalallstock(totalallstock1);
+            double value=stockarray[i].noofshare*stockarray[i].shareprice;
+            totalallstock1=totalallstock1+value;
+
+            System.out.println("Stock Name: " + stockarray[i].stockname +" Total share: "+stockarray[i].noofshare+ " Total cost: " +value);
+        }
+        System.out.println("Total value of all stocks: "+totalallstock1);
+
         }
 
 
-    }
+
 
 
     public static void main(String[] args) {
 
         StockAccount stockAccount1 =new StockAccount();
-        stockAccount1.displayStock();
+
         stockAccount1.calculatetotalstock();
-        stockAccount1.displayStock();
+
 
     }
 
